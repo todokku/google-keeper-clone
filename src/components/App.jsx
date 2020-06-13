@@ -16,12 +16,7 @@ function App() {
       content: newContent
     };
 
-    setNotes(prevNotes => {
-      return [
-        ...prevNotes,
-        note
-      ]
-    });
+    setNotes(prevNotes => [...prevNotes, note]);
   }
 
   const deleteNote = id => {
@@ -43,9 +38,9 @@ function App() {
             id={index}
             title={note.title} 
             content={note.content}
-            deleteNote={deleteNote}
+            onDelete={deleteNote}
           />
-        )
+        );
       })}
       <Footer />
     </div>

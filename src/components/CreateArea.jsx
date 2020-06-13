@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { isPropertySignature } from "typescript";
 
 function CreateArea(props) {
-  const [noteInput, setNoteInput] = useState({
+  const [note, setNote] = useState({
     title: "",
     content: ""
   });
@@ -10,20 +9,20 @@ function CreateArea(props) {
   const handleChange = e => {
     const { name, value } = e.target
     
-    setNoteInput(prevNoteInput => {
+    setNote(prevNote => {
       return {
-        ...prevNoteInput,
+        ...prevNote,
         [name]: value
       }
     });
   }
 
-  const handleClick = e => {
+  const submitNote = e => {
     e.preventDefault();
     
-    props.onAdd(noteInput.title, noteInput.content);
+    props.onAdd(note.title, note.content);
 
-    setNoteInput({
+    setNote({
       title: "",
       content: ""
     });
@@ -36,16 +35,16 @@ function CreateArea(props) {
           onChange={handleChange} 
           name="title" 
           placeholder="Title" 
-          value={noteInput.title} 
+          value={note.title} 
         />
         <textarea 
           onChange={handleChange} 
           name="content" 
           placeholder="Take a note..." 
           rows="3" 
-          value={noteInput.content} 
+          value={note.content} 
         />
-        <button onClick={handleClick}>Add</button>
+        <button onClick={submitNote}>Add</button>
       </form>
     </div>
   );
