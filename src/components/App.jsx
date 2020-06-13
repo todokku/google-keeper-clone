@@ -24,6 +24,14 @@ function App() {
     });
   }
 
+  const deleteNote = id => {
+    const notesToKeep = notes.filter((note, index) => {
+      return (index !== id && note)
+    });
+
+    setNotes(notesToKeep);
+  }
+
   return (
     <div>
       <Header />
@@ -34,7 +42,8 @@ function App() {
             key={index} 
             id={index}
             title={note.title} 
-            content={note.content} 
+            content={note.content}
+            deleteNote={deleteNote}
           />
         )
       })}
