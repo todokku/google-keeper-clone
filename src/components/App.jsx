@@ -3,9 +3,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import ExistingNotes from "../notes";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(ExistingNotes);
 
   const addNote = (newTitle, newContent) => {
     const note = {
